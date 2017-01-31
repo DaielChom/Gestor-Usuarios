@@ -1,0 +1,44 @@
+/Hereda de base
+{% extends 'base.html' %}
+
+/Pondra lo que contenga este bloque content en el bloque content de base.html
+{% block content %}
+/importa la funcion para renderizar los input
+{% from '_macro.html' import render_field%}
+%div.ancho-medio.relative.centrado.top5em#divform
+  %form.relative.centrado{class:"{{clases[1]}}", id:"estilo-form", action:"/usuarios"}
+    %h1 Usuarios
+    %input{type:"Hidden", name:"csrf_token", value:"{{csrf_token()}}"}
+    .camposform.relative.centrado
+
+      /renderiza los input
+      {{render_field(formulario.cedula, class="roboto inputForm", id = "cedula", pattern = "[0-9]{4,25}",required="True")}}
+      {{render_field(formulario.cedula.label, class = "labelForm ")}}
+
+      {{render_field(formulario.nombres, class="roboto inputForm " + clases[0], id = "nombres", pattern = "[a-zA-Z0-9 ]{4,25}", required="True")}}
+      {{render_field(formulario.nombres.label, class = "labelForm " + clases[0])}}
+
+      {{render_field(formulario.apellidos, class="roboto inputForm " + clases[0], id = "apellidos",pattern = "[a-zA-Z0-9 ]{4,25}",required="True")}}
+      {{render_field(formulario.apellidos.label, class = "labelForm " + clases[0])}}
+
+      {{render_field(formulario.direccion, class="roboto inputForm " + clases[0], id = "direccion",pattern = "[a-zA-Z0-9 ]{4,25}",required="True")}}
+      {{render_field(formulario.direccion.label, class = "labelForm " + clases[0])}}
+
+      {{render_field(formulario.correo, class="roboto inputForm " + clases[0], id = "correo",required="True")}}
+      {{render_field(formulario.correo.label, class = "labelForm " + clases[0])}}
+
+      {{render_field(formulario.fecha_de_nacimiento, class="roboto inputForm " + clases[0], id = "fecha",required="True")}}
+      {{render_field(formulario.fecha_de_nacimiento.label, class = "labelForm " + clases[0])}}
+
+    .botonesform.relative
+      %input.roboto{type:"submit", formmethod:"GET", name:"bt-consultar", id:"consultar",class:"{{clases[3]}}", value:"CONSULTAR"}
+      %input.roboto{type:"button", name:"bt-crear", id:"crear",class:"{{clases[3]}}", value:"CREAR"}
+    .botonesconsultar.relative
+      %input.roboto{type:"button", name:"bt-modificar", id:"modificar",class:"{{clases[0]}}", value:"MODIFICAR"}
+      %input.roboto{type:"button", name:"bt-eliminar", id:"eliminar",class:"{{clases[0]}}", value:"ELIMINAR"}
+      %input.roboto{type:"button", name:"bt-listo", id:"listo",class:"{{clases[0]}}", value:"LISTO"}
+    .botoncirculo
+      %input{type:"submit", formmethod:"POST", name:"bt-check", id:"check",class:"hidden",value:""}
+        %i.material-icons#iconcheck{class:"hidden"}
+          done
+{% endblock %}
