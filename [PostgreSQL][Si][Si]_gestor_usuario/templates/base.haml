@@ -1,0 +1,51 @@
+!!!5
+%html{lang:'es'}
+  %head
+    %meta{charset:'UTF-8'}
+    /Toma la variable tittle que mando la funcion render de Flask y lo imprime.
+    /Por eso el uso de
+    %title {{ title }}
+    %link{rel:"stylesheet", href:"{{ url_for('static', filename = 'css/normalize.css') }}"}
+    %link{rel:"stylesheet", href:"{{ url_for('static', filename = 'css/bootstrap.css') }}"}
+    %link{rel:"stylesheet", href:"{{ url_for('static', filename = 'css/style.css') }}"}
+    %script{src:"http://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"}
+    %link{href:"https://fonts.googleapis.com/css?family=Roboto", rel:"stylesheet"}
+    %link{href:"https://fonts.googleapis.com/icon?family=Material+Icons", rel:"stylesheet"}
+    %meta{name:"viewport", content:"width=device-width, initial-scale=1"}
+
+  %body.fondo-pantalla
+
+    /Escucha cuando aparece un message flash y lo muestra
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class="flashes">
+
+    {% for message in messages %}
+
+    {% if message == 'error'%}
+    <li class="error"> Usuario no encontrado </li>
+    {% endif %}
+
+    {% if message == 'success'%}
+    <li class="success"> Usuario creado con exito </li>
+    {% endif %}
+
+    {% if message == 'exist'%}
+    <li class="success"> El usuario ya existe </li>
+    {% endif %}
+
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+    %nav.nav#barra-nav
+      %ul#lista-barra-nav
+        %li
+          %p.titulo-barra.absolute DAIELCHOM
+
+    /bloque content
+    {% block content %} {% endblock %}
+
+    %script{type:"text/javascript", src:"{{ url_for('static', filename = 'js/jquery-1.12.0.min.js') }}"}
+    %script{type:"text/javascript", src:"{{ url_for('static', filename = 'js/jquery.js') }}"}
