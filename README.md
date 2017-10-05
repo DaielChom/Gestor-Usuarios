@@ -1,2 +1,6 @@
-# Gestor de Usuarios
-Proyecto diseñado usando `HAML (HTML)`, `SASS (CSS)`, ` Javascript`, `Flask` y `PostgreSQL`. consiste en una pagina web en la que se puede agregar, consultar, modificar y eliminar usuarios de una base de datos.
+# Gestor Usuarios:
+
+En el repositorio actual se guardan distintos proyectos en FLASK para la gestion de usuarios, actualmente se manejan solamente 2 proyectos, uno con MonogoDB y otro con PostgreSQL.
+
+##### Estandar del nombre
+[BD][Backend][Frontend]_gestor_usuario
